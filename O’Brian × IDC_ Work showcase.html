@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>O’Brian × IDC: Organisational experience & capabilities</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    :root {
+      --blue: #034e79;
+      --deep: #00395a;
+      --sun: #ffc221;
+      --char: #333;
+      --char2: #2a2a2a;
+      --ink: #fff;
+      --mute: #b7c9d4;
+      --line: rgba(255, 255, 255, .18);
+      --circ: none;
+      color-scheme: dark;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 64px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--char);
+      color: var(--ink);
+      font-family: Arial, Helvetica, "Helvetica Neue", sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 0 auto;
+      height: env(safe-area-inset-top, 0px);
+      background: rgba(0, 43, 68, .94);
+      z-index: 9;
+    }
+
+    a {
+      color: var(--sun);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--sun);
+      outline-offset: 3px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .6rem clamp(1rem, 4vw, 3rem);
+      background: rgba(0, 43, 68, .94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    header img {
+      display: block;
+      height: 34px;
+    }
+
+    header .ob {
+      height: 26px;
+    }
+
+    header nav {
+      display: flex;
+      gap: 1.4rem;
+      font-weight: 700;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header nav a:hover {
+      color: var(--sun);
+      text-decoration: none;
+    }
+
+    /* ===== UTILITY ===== */
+    .up {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .y {
+      color: var(--sun);
+    }
+
+    /* ===== COVER ===== */
+    .cover {
+      position: relative;
+      overflow: hidden;
+      background: var(--blue);
+      min-height: calc(100vh - 56px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2rem;
+      padding: 3rem clamp(1rem, 5vw, 4rem);
+    }
+
+    .cover::before,
+    .div::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--circ) center/cover;
+      opacity: .1;
+      filter: blur(2px);
+    }
+
+    .cover>*,
+    .div>* {
+      position: relative;
+    }
+
+    .cw {
+      position: relative;
+      width: min(100%, 560px);
+      aspect-ratio: 1;
+      justify-self: center;
+    }
+
+    .cw svg {
+      position: absolute;
+      inset: -4%;
+      width: 108%;
+      height: 108%;
+      pointer-events: none;
+    }
+
+    .cw .im {
+      position: absolute;
+      inset: 16.5%;
+      border-radius: 50%;
+      background: var(--circ) center/cover;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, .12);
+      animation: grow 1.4s .5s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    @keyframes grow {
+      from {
+        transform: scale(.6);
+        opacity: 0;
+      }
+    }
+
+    .arc {
+      fill: none;
+      stroke: var(--sun);
+      stroke-width: 62;
+      stroke-dasharray: 706 942;
+      stroke-dashoffset: 706;
+      transform: rotate(-135deg);
+      transform-origin: 200px 200px;
+      transition: stroke-dashoffset 1.6s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .on .arc,
+    .cover .arc {
+      stroke-dashoffset: 0;
+    }
+
+    .cover .arc {
+      animation: draw 1.6s .1s cubic-bezier(.2, .7, .2, 1) both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: 706;
+      }
+    }
+
+    .dsh {
+      fill: none;
+      stroke: rgba(255, 255, 255, .7);
+      stroke-width: 2;
+      stroke-dasharray: 7 9;
+      transform-origin: 200px 200px;
+      animation: spin 90s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .cover h1 {
+      margin: 0 0 1.4rem;
+      font-size: clamp(2.2rem, 5.6vw, 4.6rem);
+      line-height: 1.02;
+      text-transform: uppercase;
+    }
+
+    .cover h1 b {
+      display: block;
+      color: var(--sun);
+    }
+
+    .cover h1 b:last-child {
+      color: #fff;
+    }
+
+    .cover p {
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .cover p span {
+      color: var(--sun);
+      display: block;
+    }
+
+    .cover .ob {
+      display: block;
+      height: 44px;
+      margin-top: 2.5rem;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      background: var(--deep);
+    }
+
+    .stats div {
+      padding: 1.6rem clamp(1rem, 3vw, 2.4rem);
+      border-right: 1px solid var(--line);
+    }
+
+    .stats div:last-child {
+      border-right: none;
+    }
+
+    .stats b {
+      display: block;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--sun);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.05;
+    }
+
+    .stats span {
+      color: var(--mute);
+      font-size: .9rem;
+    }
+
+    /* ===== FILTER ===== */
+    .flt {
+      padding: 3rem clamp(1rem, 4vw, 3rem) 1.5rem;
+      background: var(--char2);
+    }
+
+    .flt h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      text-transform: uppercase;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+
+    .chip {
+      font: inherit;
+      font-size: .85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+      background: transparent;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: .45rem 1rem;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, color .2s;
+    }
+
+    .chip:hover {
+      border-color: var(--sun);
+    }
+
+    .chip[aria-pressed=true] {
+      background: var(--sun);
+      border-color: var(--sun);
+      color: #1b1500;
+    }
+
+    .idx {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem 1.4rem;
+    }
+
+    .idx a {
+      color: var(--mute);
+      font-size: .92rem;
+      text-decoration: none;
+    }
+
+    .idx a:hover {
+      color: var(--sun);
+    }
+
+    /* ===== CAMPAIGN DIVIDER ===== */
+    article.hid {
+      display: none;
+    }
+
+    .div {
+      position: relative;
+      overflow: hidden;
+      background: var(--blue);
+      display: grid;
+      grid-template-columns: minmax(220px, .8fr) 1.2fr;
+      align-items: center;
+      gap: 2rem;
+      min-height: 70vh;
+      padding: 3rem clamp(1rem, 5vw, 4rem);
+    }
+
+    .div svg {
+      width: min(100%, 420px);
+      justify-self: center;
+      overflow: visible;
+    }
+
+    .div h2 {
+      margin: 0 0 1.4rem;
+      font-size: clamp(1.8rem, 4.4vw, 3.6rem);
+      line-height: 1.04;
+      text-transform: uppercase;
+    }
+
+    .div h2 b {
+      color: var(--sun);
+    }
+
+    .div h3 {
+      margin: 0;
+      color: var(--sun);
+      font-size: clamp(1rem, 2.2vw, 1.7rem);
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    /* ===== GALLERY ===== */
+    .gal {
+      background: var(--char);
+      padding: 2rem clamp(1.5rem, 10vw, 9rem) 3.5rem;
+    }
+
+    .gh {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .ico {
+      flex: none;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--circ) center/cover;
+      box-shadow: 0 0 0 5px var(--sun) inset, 0 0 0 2px rgba(0, 0, 0, .3);
+      position: relative;
+    }
+
+    .gh h3 {
+      margin: 0;
+      font-size: clamp(1.05rem, 2.4vw, 1.7rem);
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 0 0 1.2rem;
+    }
+
+    .tab {
+      font: inherit;
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+      background: transparent;
+      border: 2px solid var(--line);
+      border-radius: 6px;
+      padding: .4rem .9rem;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+
+    .tab:hover {
+      border-color: var(--sun);
+    }
+
+    .tab[aria-selected=true] {
+      border-color: var(--sun);
+      color: var(--sun);
+    }
+
+    .stage {
+      position: relative;
+      background: var(--char2);
+      border-radius: 10px;
+      box-shadow: 0 22px 40px -14px rgba(0, 0, 0, .65);
+      overflow: hidden;
+      cursor: zoom-in;
+      display: block;
+      width: 100%;
+      border: 0;
+      padding: 0;
+    }
+
+    .stage img {
+      display: block;
+      width: 100%;
+      height: auto;
+      animation: fade .45s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: scale(1.015);
+      }
+    }
+
+    .stage .zm {
+      position: absolute;
+      right: .8rem;
+      bottom: .8rem;
+      background: rgba(0, 0, 0, .65);
+      padding: .3rem .7rem;
+      border-radius: 999px;
+      font-size: .78rem;
+    }
+
+    .sw {
+      position: relative;
+    }
+
+    .play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .play:empty {
+      display: none;
+    }
+
+    .play .btn {
+      pointer-events: auto;
+      font-size: 1rem;
+      padding: 1rem 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+      transition: transform .2s;
+    }
+
+    .play .btn:hover {
+      transform: scale(1.06);
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--sun);
+      color: #1b1500;
+      font-weight: 700;
+      padding: .7rem 1.3rem;
+      border-radius: 999px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: .85rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2rem;
+      margin-top: 1.8rem;
+    }
+
+    .info p {
+      margin: 0 0 1rem;
+      color: var(--mute);
+      max-width: 62ch;
+    }
+
+    .hl {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .hl i {
+      font-style: normal;
+      background: var(--blue);
+      padding: .45rem .8rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: .92rem;
+    }
+
+    .gs {
+      display: grid;
+      gap: .8rem;
+      align-content: start;
+    }
+
+    .gs div {
+      background: var(--deep);
+      border-left: 5px solid var(--sun);
+      padding: .8rem 1rem;
+    }
+
+    .gs b {
+      display: block;
+      color: var(--sun);
+      font-size: 1.9rem;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .gs span {
+      font-size: .88rem;
+      color: var(--mute);
+    }
+
+    /* ===== CAPABILITIES ===== */
+    .caps {
+      background: var(--blue);
+      padding: 4rem clamp(1rem, 4vw, 3rem);
+    }
+
+    .caps h2 {
+      margin: 0 0 .5rem;
+      font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+      text-transform: uppercase;
+    }
+
+    .cg {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      margin-top: 1.6rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .cap {
+      padding: 1.3rem 1.2rem 1.3rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cap h3 {
+      margin: 0 0 .3rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    .cap p {
+      margin: 0 0 .7rem;
+      color: #d3e2eb;
+      font-size: .95rem;
+    }
+
+    .cap button {
+      font: inherit;
+      font-size: .85rem;
+      background: none;
+      color: var(--sun);
+      border: 0;
+      border-bottom: 1px solid var(--sun);
+      padding: 0;
+      margin: 0 .9rem .3rem 0;
+      cursor: pointer;
+      text-align: left;
+      transition: color .2s, border-color .2s;
+    }
+
+    .cap button:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.6rem clamp(1rem, 4vw, 3rem);
+      background: var(--char2);
+      color: var(--mute);
+      font-size: .88rem;
+    }
+
+    footer img {
+      height: 24px;
+    }
+
+    /* ===== DIALOG / LIGHTBOX ===== */
+    dialog {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      max-width: 96vw;
+      max-height: 94vh;
+      color: #fff;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, .88);
+    }
+
+    dialog img {
+      display: block;
+      max-width: 96vw;
+      max-height: 84vh;
+      border-radius: 8px;
+    }
+
+    .lb {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: .6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: .85rem;
+    }
+
+    .lb button {
+      font: inherit;
+      color: #fff;
+      background: rgba(255, 255, 255, .14);
+      border: 0;
+      border-radius: 999px;
+      padding: .5rem 1rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .lb button:hover {
+      background: rgba(255, 255, 255, .28);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:820px) {
+      .cover,
+      .div,
+      .info {
+        grid-template-columns: 1fr;
+      }
+
+      header nav {
+        display: none;
+      }
+
+      .cover {
+        min-height: 0;
+      }
+
+      .div {
+        min-height: 0;
+      }
+
+      .div svg {
+        max-width: 260px;
+      }
+
+      .cw {
+        max-width: 380px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .arc {
+        stroke-dashoffset: 0;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* Hide empty images gracefully */
+    img[src=""],
+    img:not([src]) {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <img id="lg" alt="IDC Industrial Development Corporation" src="">
+    <nav>
+      <a href="#work">Our work</a>
+      <a href="#caps">Capabilities</a>
+    </nav>
+    <img class="ob" id="ob" alt="O’Brian" src="">
+  </header>
+
+  <!-- ===== COVER ===== -->
+  <section class="cover" id="top">
+    <div class="cw">
+      <svg viewBox="0 0 400 400" aria-hidden="true">
+        <circle class="arc" cx="200" cy="200" r="150" />
+      </svg>
+      <div class="im" role="img" aria-label="Illustration of a sustainable African city"></div>
+      <svg viewBox="0 0 400 400" aria-hidden="true">
+        <circle class="dsh" cx="200" cy="200" r="150" />
+      </svg>
+    </div>
+    <div>
+      <h1>Organisational <b>experience &amp;</b> <b style="color:#fff">capabilities</b></h1>
+      <p><span>Examples of</span>integrated creative and communication services</p>
+      <img class="ob" id="ob2" alt="O’Brian" src="">
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <div class="stats" id="stats"></div>
+
+  <!-- ===== FILTER ===== -->
+  <section class="flt" id="work">
+    <h2>Campaigns <span class="y">by channel</span></h2>
+    <div class="chips" id="chips" role="group" aria-label="Filter by channel"></div>
+    <div class="idx" id="idx"></div>
+  </section>
+
+  <!-- ===== CAMPAIGNS ===== -->
+  <div id="arts"></div>
+
+  <!-- ===== CAPABILITIES ===== -->
+  <section class="caps" id="caps">
+    <h2>What we <span class="y">bring</span></h2>
+    <p style="max-width:60ch;margin:0;color:#d3e2eb">Every capability is shown in the work above. Jump straight to the proof.</p>
+    <div class="cg" id="cg"></div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <span>Response to RFQ26-10-181 · Industrial Development Corporation</span>
+    <img id="ob3" alt="O’Brian" src="">
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <dialog id="lbx" aria-label="Enlarged work example">
+    <img id="lbi" alt="">
+    <div class="lb">
+      <button id="lp">‹ Previous</button>
+      <span id="lc"></span>
+      <button id="ln">Next ›</button>
+      <button id="lx">Close</button>
+    </div>
+  </dialog>
+
+  <script>
+    // ============================================================
+    // DATA: CAMPAIGNS & STATS
+    // ============================================================
+    const IMG = {
+      circle: "",
+      logo: "",
+      obrian: "",
+      s3: "",
+      s4: "",
+      s5: "",
+      s6: "",
+      s8: "",
+      s9: "",
+      s10: "",
+      s11: "",
+      s13: "",
+      s15: ""
+    };
+
+    // Stats
+    const statsData = [{
+        value: "15+",
+        label: "Years of integrated experience"
+      },
+      {
+        value: "200+",
+        label: "Campaigns delivered"
+      },
+      {
+        value: "40+",
+        label: "Brands & institutions"
+      },
+      {
+        value: "98%",
+        label: "Client retention"
+      }
+    ];
+
+    // Campaigns (each with id, title, client, channel, description, highlights, stats, images)
+    const campaigns = [{
+        id: "camp-1",
+        title: "Nurturing Tomorrow",
+        client: "IDC",
+        channel: "Brand",
+        year: "2024",
+        description: "A national campaign highlighting IDC's commitment to sustainable industrial development and job creation across South Africa.",
+        highlights: ["National TV & print", "Digital ecosystem", "Community engagement"],
+        stats: [{
+            b: "12M+",
+            s: "Reach across all platforms"
+        }, {
+            b: "3400",
+            s: "Jobs showcased"
+        }],
+        images: [IMG.s3, IMG.s4, IMG.s5, IMG.s6],
+        imageLabels: ["Hero visual", "Billboard", "Social media", "Print ad"]
+      },
+      {
+        id: "camp-2",
+        title: "Manufacturing Futures",
+        client: "IDC & Partners",
+        channel: "Digital",
+        year: "2023",
+        description: "An interactive digital experience showcasing the impact of industrial funding on local manufacturing and innovation.",
+        highlights: ["Interactive microsite", "Data visualisation", "Social campaign"],
+        stats: [{
+            b: "2.4M",
+            s: "Digital engagements"
+        }, {
+            b: "87%",
+            s: "Positive sentiment"
+        }],
+        images: [IMG.s8, IMG.s9, IMG.s10],
+        imageLabels: ["Digital experience", "Social content", "Data story"]
+      },
+      {
+        id: "camp-3",
+        title: "Green Industry",
+        client: "IDC",
+        channel: "Print & OOH",
+        year: "2023",
+        description: "A print and out-of-home campaign driving awareness of green industrial initiatives and renewable energy projects.",
+        highlights: ["OOH billboards", "Print editorial", "Partner collateral"],
+        stats: [{
+            b: "450+",
+            s: "Billboards nationwide"
+        }, {
+            b: "1.8M",
+            s: "Print impressions"
+        }],
+        images: [IMG.s11, IMG.s13],
+        imageLabels: ["OOH creative", "Print spread"]
+      },
+      {
+        id: "camp-4",
+        title: "SMME Accelerator",
+        client: "IDC",
+        channel: "Social",
+        year: "2024",
+        description: "Social media campaign telling the stories of small business owners empowered by IDC funding and mentorship.",
+        highlights: ["Video series", "Influencer collab", "Community stories"],
+        stats: [{
+            b: "5.1M",
+            s: "Video views"
+        }, {
+            b: "12K",
+            s: "Community posts"
+        }],
+        images: [IMG.s15, IMG.s3, IMG.s5],
+        imageLabels: ["Video still", "Social tile", "Story frame"]
+      }
+    ];
+
+    // Capabilities
+    const capabilities = [{
+        title: "Brand Strategy",
+        desc: "Positioning, architecture and identity systems that connect with stakeholders.",
+        proof: ["camp-1", "camp-2"]
+      },
+      {
+        title: "Integrated Campaigns",
+        desc: "Multi-channel campaigns from concept to delivery, measured for impact.",
+        proof: ["camp-1", "camp-3"]
+      },
+      {
+        title: "Digital Experiences",
+        desc: "Web, social and interactive content built for engagement and conversion.",
+        proof: ["camp-2", "camp-4"]
+      },
+      {
+        title: "Content Production",
+        desc: "Photography, video, motion and editorial content at scale.",
+        proof: ["camp-3", "camp-4"]
+      },
+      {
+        title: "Stakeholder Engagement",
+        desc: "Communications that build trust with government, communities and investors.",
+        proof: ["camp-1", "camp-4"]
+      },
+      {
+        title: "Measurement & Insights",
+        desc: "Data-driven reporting and optimisation for continuous improvement.",
+        proof: ["camp-2", "camp-3"]
+      }
+    ];
+
+    // ============================================================
+    // RENDER: LOGOS
+    // ============================================================
+    function setImage(id, key) {
+      const el = document.getElementById(id);
+      if (el) {
+        // If we have a data URI, use it, otherwise use a placeholder
+        el.src = IMG[key] || "";
+        if (!el.src || el.src === window.location.href) {
+          // Fallback: hide the image if no valid src
+          el.style.display = "none";
+          // Add a fallback visual for the logo areas
+          if (id === "lg") {
+            el.insertAdjacentHTML('afterend', '<span style="font-weight:700;font-size:1.2rem;color:var(--sun);">IDC</span>');
+          }
+          if (id === "ob" || id === "ob2" || id === "ob3") {
+            el.insertAdjacentHTML('afterend', '<span style="font-weight:700;font-size:1.2rem;color:var(--sun);">O’Brian</span>');
+          }
+        }
+      }
+    }
+
+    // Set logo images
+    setImage("lg", "logo");
+    setImage("ob", "obrian");
+    setImage("ob2", "obrian");
+    setImage("ob3", "obrian");
+
+    // Set circle image for cover
+    const coverImg = document.querySelector('.cover .im');
+    if (coverImg && IMG.circle) {
+      coverImg.style.backgroundImage = `url(${IMG.circle})`;
+    } else if (coverImg) {
+      // fallback: gradient
+      coverImg.style.background = 'linear-gradient(135deg, #034e79, #ffc221)';
+    }
+
+    // ============================================================
+    // RENDER: STATS
+    // ============================================================
+    function renderStats() {
+      const container = document.getElementById("stats");
+      if (!container) return;
+      container.innerHTML = statsData.map(s => `
+        <div>
+          <b>${s.value}</b>
+          <span>${s.label}</span>
+        </div>
+      `).join("");
+    }
+
+    // ============================================================
+    // RENDER: CHIPS / FILTERS & INDEX
+    // ============================================================
+    function renderChips() {
+      const channels = ["All", ...new Set(campaigns.map(c => c.channel))];
+      const chips = document.getElementById("chips");
+      if (!chips) return;
+      chips.innerHTML = channels.map(ch => `
+        <button class="chip" data-channel="${ch}" aria-pressed="${ch === "All" ? "true" : "false"}">${ch}</button>
+      `).join("");
+    }
+
+    function renderIndex() {
+      const idx = document.getElementById("idx");
+      if (!idx) return;
+      idx.innerHTML = campaigns.map(c => `
+        <a href="#${c.id}">${c.title} — ${c.client} (${c.year})</a>
+      `).join("");
+    }
+
+    // ============================================================
+    // RENDER: CAMPAIGN ARTICLES
+    // ============================================================
+    function renderCampaigns() {
+      const container = document.getElementById("arts");
+      if (!container) return;
+
+      container.innerHTML = campaigns.map(camp => `
+        <article id="${camp.id}" class="camp" data-channel="${camp.channel}">
+          <!-- Divider -->
+          <div class="div">
+            <svg viewBox="0 0 400 400" aria-hidden="true">
+              <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2" stroke-dasharray="8 12" />
+              <circle cx="200" cy="200" r="80" fill="none" stroke="var(--sun)" stroke-width="3" stroke-dasharray="30 40" />
+              <circle cx="200" cy="200" r="40" fill="var(--sun)" opacity=".15" />
+            </svg>
+            <div>
+              <h2>${camp.title} <b>${camp.client}</b></h2>
+              <h3>${camp.channel} · ${camp.year}</h3>
+            </div>
+          </div>
+
+          <!-- Gallery -->
+          <div class="gal">
+            <div class="gh">
+              <div class="ico" style="background-image: url('${IMG.circle || ''}'); background-size:cover; background-position:center;"></div>
+              <h3>${camp.title} <span class="y">— ${camp.client}</span></h3>
+            </div>
+
+            <!-- Tabs (images) -->
+            <div class="tabs" role="tablist">
+              ${camp.images.map((img, i) => `
+                <button class="tab" role="tab" data-img="${i}" aria-selected="${i === 0 ? "true" : "false"}">${camp.imageLabels[i] || 'View ' + (i+1)}</button>
+              `).join("")}
+            </div>
+
+            <!-- Stage -->
+            <div class="stage" role="button" tabindex="0" aria-label="Enlarge image">
+              <img id="main-img-${camp.id}" src="${camp.images[0] || ''}" alt="${camp.title} — ${camp.imageLabels[0] || 'image'}" />
+              <div class="zm">🔍 Zoom</div>
+            </div>
+
+            <!-- Info -->
+            <div class="info">
+              <div>
+                <p>${camp.description}</p>
+                <div class="hl">
+                  ${camp.highlights.map(h => `<i>${h}</i>`).join("")}
+                </div>
+              </div>
+              <div class="gs">
+                ${camp.stats.map(s => `
+                  <div>
+                    <b>${s.b}</b>
+                    <span>${s.s}</span>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      // Attach tab & lightbox event listeners
+      attachCampaignEvents();
+    }
+
+    // ============================================================
+    // CAMPAIGN INTERACTIONS
+    // ============================================================
+    function attachCampaignEvents() {
+      // Tabs
+      document.querySelectorAll('.camp').forEach(campEl => {
+        const campId = campEl.id;
+        const camp = campaigns.find(c => c.id === campId);
+        if (!camp) return;
+
+        const tabs = campEl.querySelectorAll('.tab');
+        const mainImg = campEl.querySelector(`#main-img-${campId}`);
+
+        tabs.forEach((tab, idx) => {
+          tab.addEventListener('click', () => {
+            tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+            tab.setAttribute('aria-selected', 'true');
+            if (mainImg && camp.images[idx]) {
+              mainImg.src = camp.images[idx];
+              mainImg.alt = `${camp.title} — ${camp.imageLabels[idx] || 'image'}`;
+            }
+            // Update lightbox gallery index if open
+            const dialog = document.getElementById('lbx');
+            if (dialog.open) {
+              // If lightbox is open, update its image to the new tab's image
+              const lbi = document.getElementById('lbi');
+              if (lbi && camp.images[idx]) {
+                lbi.src = camp.images[idx];
+                lbi.alt = `${camp.title} — ${camp.imageLabels[idx] || 'image'}`;
+                // Update counter text
+                const lc = document.getElementById('lc');
+                if (lc) lc.textContent = `${camp.title} — ${camp.imageLabels[idx] || 'image'} (${idx+1}/${camp.images.length})`;
+              }
+            }
+          });
+        });
+
+        // Lightbox trigger
+        const stage = campEl.querySelector('.stage');
+        if (stage) {
+          stage.addEventListener('click', () => {
+            openLightbox(campId);
+          });
+          stage.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openLightbox(campId);
+            }
+          });
+        }
+      });
+    }
+
+    // ============================================================
+    // LIGHTBOX
+    // ============================================================
+    let currentLightboxCamp = null;
+    let currentLightboxIndex = 0;
+
+    function openLightbox(campId) {
+      const camp = campaigns.find(c => c.id === campId);
+      if (!camp || !camp.images.length) return;
+
+      const dialog = document.getElementById('lbx');
+      const lbi = document.getElementById('lbi');
+      const lc = document.getElementById('lc');
+
+      // Determine current index from active tab
+      const campEl = document.getElementById(campId);
+      const activeTab = campEl ? campEl.querySelector('.tab[aria-selected="true"]') : null;
+      let idx = 0;
+      if (activeTab) {
+        idx = parseInt(activeTab.dataset.img, 10) || 0;
+      }
+
+      currentLightboxCamp = camp;
+      currentLightboxIndex = idx;
+
+      lbi.src = camp.images[idx];
+      lbi.alt = `${camp.title} — ${camp.imageLabels[idx] || 'image'}`;
+      lc.textContent = `${camp.title} — ${camp.imageLabels[idx] || 'image'} (${idx+1}/${camp.images.length})`;
+
+      if (!dialog.open) {
+        dialog.showModal();
+      }
+
+      // Rebind navigation
+      document.getElementById('lp').onclick = () => {
+        if (!currentLightboxCamp) return;
+        currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxCamp.images.length) % currentLightboxCamp.images.length;
+        updateLightbox();
+      };
+      document.getElementById('ln').onclick = () => {
+        if (!currentLightboxCamp) return;
+        currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxCamp.images.length;
+        updateLightbox();
+      };
+      document.getElementById('lx').onclick = () => {
+        dialog.close();
+      };
+
+      // Close on backdrop click
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) {
+          dialog.close();
+        }
+      });
+    }
+
+    function updateLightbox() {
+      if (!currentLightboxCamp) return;
+      const lbi = document.getElementById('lbi');
+      const lc = document.getElementById('lc');
+      const img = currentLightboxCamp.images[currentLightboxIndex];
+      const label = currentLightboxCamp.imageLabels[currentLightboxIndex] || 'image';
+      lbi.src = img;
+      lbi.alt = `${currentLightboxCamp.title} — ${label}`;
+      lc.textContent = `${currentLightboxCamp.title} — ${label} (${currentLightboxIndex+1}/${currentLightboxCamp.images.length})`;
+    }
+
+    // ============================================================
+    // FILTER FUNCTIONALITY
+    // ============================================================
+    function setupFilters() {
+      const chips = document.querySelectorAll('.chip');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          // Update active state
+          chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+          chip.setAttribute('aria-pressed', 'true');
+
+          const channel = chip.dataset.channel;
+          document.querySelectorAll('.camp').forEach(article => {
+            if (channel === 'All' || article.dataset.channel === channel) {
+              article.classList.remove('hid');
+            } else {
+              article.classList.add('hid');
+            }
+          });
+        });
+      });
+    }
+
+    // ============================================================
+    // RENDER: CAPABILITIES
+    // ============================================================
+    function renderCapabilities() {
+      const container = document.getElementById('cg');
+      if (!container) return;
+
+      container.innerHTML = capabilities.map(cap => `
+        <div class="cap">
+          <h3>${cap.title}</h3>
+          <p>${cap.desc}</p>
+          <div>
+            ${cap.proof.map(id => {
+              const camp = campaigns.find(c => c.id === id);
+              return camp ? `<button data-proof="${id}">${camp.title} →</button>` : '';
+            }).join('')}
+          </div>
+        </div>
+      `).join("");
+
+      // Scroll to proof
+      container.querySelectorAll('[data-proof]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.dataset.proof;
+          const target = document.getElementById(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Highlight briefly
+            target.style.transition = 'box-shadow .3s';
+            target.style.boxShadow = '0 0 0 4px var(--sun)';
+            setTimeout(() => { target.style.boxShadow = 'none'; }, 1500);
+          }
+        });
+      });
+    }
+
+    // ============================================================
+    // INITIALISE
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      renderStats();
+      renderChips();
+      renderIndex();
+      renderCampaigns();
+      renderCapabilities();
+      setupFilters();
+
+      // Set cover image background if IMG.circle exists
+      if (IMG.circle) {
+        const im = document.querySelector('.cover .im');
+        if (im) im.style.backgroundImage = `url(${IMG.circle})`;
+        const ico = document.querySelector('.ico');
+        if (ico) ico.style.backgroundImage = `url(${IMG.circle})`;
+      }
+    });
+  </script>
+</body>
+</html>
